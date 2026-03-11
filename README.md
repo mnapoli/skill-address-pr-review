@@ -4,7 +4,7 @@ A Claude Code skill that **reads pull request comments and CI failures and fixes
 
 ```mermaid
 flowchart LR
-    A[Open PR] --> B[Code review]
+    A[Open PR] --> B[GitHub code review]
     B --> C[`/address-pr-review`]
     C --> B
     B --> D[Merge PR]
