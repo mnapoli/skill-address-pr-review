@@ -1,6 +1,6 @@
 # Address PR Review
 
-A Claude Code skill that reviews pull request comments and CI failures, then addresses them automatically.
+A Claude Code skill that **reads pull request comments and CI failures and fixes them automatically**.
 
 ```mermaid
 flowchart LR
