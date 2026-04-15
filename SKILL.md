@@ -1,5 +1,6 @@
 ---
-description: Look at the pull request review comments and address any issues raised.
+name: address-pr-review
+description: "Reads unresolved GitHub PR review threads and failing CI checks, modifies code to address reviewer feedback, verifies fixes pass CI, and replies to each thread. Use when the user asks to fix PR comments, address code review feedback, resolve review suggestions, handle reviewer requests, or respond to GitHub review threads."
 disable-model-invocation: true
 context: fork
 allowed-tools: Bash(bash ~/.claude/skills/address-pr-review/*)
@@ -43,7 +44,17 @@ For each CI failure:
 1. Read the failure output to understand what broke
 2. Fix the code or tests to make CI pass
 
-## Step 3: Reply to each review thread
+## Step 3: Verify fixes
+
+After making changes, re-run the CI check to confirm fixes resolve the failures:
+
+```bash
+bash ~/.claude/skills/address-pr-review/get-failing-ci.sh
+```
+
+If failures persist, return to Step 2 and iterate until CI is green.
+
+## Step 4: Reply to each review thread
 
 After addressing each comment, reply using the helper script:
 
