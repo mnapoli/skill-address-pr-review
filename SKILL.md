@@ -43,14 +43,18 @@ For each CI failure:
 1. Read the failure output to understand what broke
 2. Fix the code or tests to make CI pass
 
-## Step 3: Reply to each review thread
+## Step 3: Commit and push changes
+
+After addressing all review comments and CI failures, commit your changes and push.
+
+## Step 4: Reply to each review thread
 
 After addressing each comment, reply using the helper script:
 
 ```bash
-bash ~/.claude/skills/address-pr-review/reply-to-thread.sh "<thread_id>" "<body>"
+bash ~/.claude/skills/address-pr-review/reply-to-thread.sh "<thread_id>" "<body>" [--resolve]
 ```
 
-- If the code was fixed as mentioned in the thread, reply with simply: "Fixed as suggested."
-- If no change was needed, briefly explain why.
+- If the code was fixed as mentioned in the thread, reply with simply: "Fixed as suggested." and pass `--resolve` to mark the thread as resolved.
+- If no change was applied, briefly explain why and keep the thread unresolved (omit `--resolve`) so the reviewer can reply if they disagree.
 - Don't be unnecessarily verbose.
