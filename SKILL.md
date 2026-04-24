@@ -2,7 +2,7 @@
 description: Look at the pull request review comments and address any issues raised.
 disable-model-invocation: true
 context: fork
-allowed-tools: Bash(bash ${CLAUDE_SKILL_DIR}/*)
+allowed-tools: Bash(bash ~/.claude/skills/address-pr-review/*)
 ---
 
 ## Step 1: Fetch unresolved review threads and CI status
