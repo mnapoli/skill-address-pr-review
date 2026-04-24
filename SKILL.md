@@ -2,7 +2,7 @@
 description: Look at the pull request review comments and address any issues raised.
 disable-model-invocation: true
 context: fork
-allowed-tools: Bash(bash ~/.claude/skills/address-pr-review/*)
+allowed-tools: Bash(bash ${CLAUDE_SKILL_DIR}/*)
 ---
 
 ## Step 1: Fetch unresolved review threads and CI status
@@ -10,11 +10,11 @@ allowed-tools: Bash(bash ~/.claude/skills/address-pr-review/*)
 Run both helper scripts:
 
 ```bash
-bash ~/.claude/skills/address-pr-review/get-unresolved-threads.sh
+bash ./get-unresolved-threads.sh
 ```
 
 ```bash
-bash ~/.claude/skills/address-pr-review/get-failing-ci.sh
+bash ./get-failing-ci.sh
 ```
 
 The first returns a JSON array of unresolved threads. Each thread has:
@@ -52,7 +52,7 @@ After addressing all review comments and CI failures, commit your changes and pu
 After addressing each comment, reply using the helper script:
 
 ```bash
-bash ~/.claude/skills/address-pr-review/reply-to-thread.sh "<thread_id>" "<body>" [--resolve]
+bash ./reply-to-thread.sh "<thread_id>" "<body>" [--resolve]
 ```
 
 - If the code was fixed as mentioned in the thread, reply with simply: "Fixed as suggested." and pass `--resolve` to mark the thread as resolved.

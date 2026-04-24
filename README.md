@@ -1,6 +1,8 @@
 # Address PR Review
 
-A Claude Code skill that **reads pull request comments and CI failures and fixes them automatically**.
+An agent skill that **reads pull request comments and CI failures and fixes them automatically**.
+
+Works in Claude Code, Codex, Cursor...
 
 ```mermaid
 flowchart LR
@@ -10,7 +12,7 @@ flowchart LR
     B --> D[Merge PR]
 ```
 
-Open a PR and invoke `/address-pr-review` in Claude Code:
+Open a PR and invoke `/address-pr-review` in Claude Code (or `$address-pr-review` in Codex):
 
 - Fixes CI failures
 - Reads inline pull request comments (ignores resolved comments)
@@ -22,14 +24,24 @@ Open a PR and invoke `/address-pr-review` in Claude Code:
 ## Prerequisites
 
 - [GitHub CLI](https://cli.github.com/) (`gh`) installed and authenticated
-- Claude Code
+- Claude Code, Codex, Cursor, or [any agent system that can run shell commands and make code changes](https://agentskills.io/home#where-can-i-use-agent-skills)
 
 ## Installation
+
+### In Claude Code
 
 Clone into your Claude Code skills directory:
 
 ```bash
 git clone git@github.com:mnapoli/skill-address-pr-review.git ~/.claude/skills/address-pr-review
+```
+
+### In other systems
+
+Most other agent systems read from a ".agents/skills" directory:
+
+```bash
+git clone git@github.com:mnapoli/skill-address-pr-review.git ~/.agents/skills/address-pr-review
 ```
 
 ## Usage
@@ -40,7 +52,7 @@ From a branch with an open PR:
 /address-pr-review
 ```
 
-Claude will fetch unresolved threads and CI failures, fix the issues, and reply to reviewers.
+Your agent will fetch unresolved threads and CI failures, fix the issues, and reply to reviewers.
 
 ## Tips
 
@@ -54,4 +66,3 @@ Claude will fetch unresolved threads and CI failures, fix the issues, and reply 
 ## Limitations
 
 - CI failure extraction is designed for GitHub Actions — other CI systems may not work
-- Install path is fixed at `~/.claude/skills/address-pr-review/`
